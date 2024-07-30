@@ -11,4 +11,6 @@ const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   role: { enum: ["entrepreneur", "investor"], require: true },
 },
-  { timestamps: true })
+  { timestamps: true });
+userSchema.plugin(toJSON)
+export const User = model('User', userSchema);
