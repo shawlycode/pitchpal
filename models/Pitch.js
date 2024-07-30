@@ -21,7 +21,8 @@ const pitchSchema = new Schema({
   productDetails: { type: String },
   ideation: { type: String }, // why the idea
   competitors: { type: String },
-  forcastAmount: { type: Number, default: 0.00 } // how will you make  money?
+  forcastAmount: { type: Number, default: 0.00 }, // how will you make  money?
+  companyRegDocs: { type: String }
 
 },
 
