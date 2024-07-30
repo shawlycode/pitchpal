@@ -23,4 +23,4 @@ const profileSchema = new Schema({
   timestamps: true
 });
 profileSchema.plugin(toJSON)
-export const Profile = model('Profile', profileSchema);
+export const ProfileModel = model('Profile', profileSchema);

@@ -13,4 +13,4 @@ const userSchema = new Schema({
 },
   { timestamps: true });
 userSchema.plugin(toJSON)
-export const User = model('User', userSchema);
+export const UserModel = model('User', userSchema);

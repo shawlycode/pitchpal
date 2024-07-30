@@ -28,4 +28,4 @@ const pitchSchema = new Schema({
 
   { timestamps: true });
 pitchSchema.plugin(toJSON)
-export const Pitch = model('Pitch', pitchSchema);
+export const PitchModel = model('Pitch', pitchSchema);
