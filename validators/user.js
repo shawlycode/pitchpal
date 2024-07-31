@@ -7,7 +7,12 @@ export const registerValidator = joi.object({
   username: joi.string().required(),
   email: joi.string().email().required(),
   password: joi.string().required(),
-  confirmPassword: joi.ref('password'),
   role: joi.string().required()
 
+})
+
+export const loginValidator = joi.object({
+  username: joi.string().alphanum(),
+  email: joi.string().email(),
+  password: joi.string().required()
 })
