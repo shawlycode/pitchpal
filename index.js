@@ -6,6 +6,7 @@ import MongoStore from 'connect-mongo';
 import expressOasGenerator from '@mickeymond/express-oas-generator'
 import session from 'express-session';
 import 'dotenv/config'
+import mongoose from 'mongoose';
 
 
 const pitchpal = express();
