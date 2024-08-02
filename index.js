@@ -1,13 +1,22 @@
 import express from 'express'
 import { dbconnection } from './config/db.js'
 import { userRouter } from './routes/User.js';
+import cors from 'cors'
 import MongoStore from 'connect-mongo';
+import expressOasGenerator from '@mickeymond/express-oas-generator'
 import session from 'express-session';
 import 'dotenv/config'
+import mongoose from 'mongoose';
 
 
 const pitchpal = express();
 
+
+expressOasGenerator.handleResponses(pitchpal, {
+  alwaysServeDocs: true,
+  tags: ['auth', 'User'],
+  mongooseModels: mongoose.modelNames(),
+})
 //use middlewares
 pitchpal.use(express.json());
 pitchpal.use(session({
@@ -21,11 +30,14 @@ pitchpal.use(session({
 }))
 
 
+pitchpal.use(cors({ credentials: true, origin: '*' }));
 
 //listening to port
 const PORT = process.env.PORT || 8090
 pitchpal.use('/user', userRouter)
 
+expressOasGenerator.handleRequests();
+pitchpal.use((req, res) => res.redirect('/api-docs/'));
 dbconnection()
   .then(() => {
     pitchpal.listen(PORT, () => {
