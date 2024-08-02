@@ -1,6 +1,7 @@
 import express from 'express'
 import { dbconnection } from './config/db.js'
 import { userRouter } from './routes/User.js';
+import cors from 'cors'
 import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import 'dotenv/config'
@@ -20,7 +21,7 @@ pitchpal.use(session({
   })
 }))
 
-
+pitchpal.use(cors({ credentials: true, origin: '*' }));
 
 //listening to port
 const PORT = process.env.PORT || 8090
