@@ -65,3 +65,15 @@ export const profile = async (req, res, next) => {
     next(error)
   }
 }
+
+export const logout = async (req, res, next) => {
+  try {
+    //destroy user session
+    await req.session.destroy();
+    //return res
+    res.status(200).json('User logged out');
+  } catch (error) {
+    next(error)
+
+  }
+}

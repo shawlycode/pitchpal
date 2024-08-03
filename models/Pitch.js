@@ -7,7 +7,7 @@ const pitchSchema = new Schema({
   user: { type: Types.ObjectId, ref: "User", required: true },
   founderVideoUrl: { type: String }, // 1 minute video(upload) intro of founder(s)
   recordVideo: { type: String }, // record 1 minute video of founder(s)
-  companyName: { type: String },
+  companyName: { type: String, required: true },
   role: { type: String, enum: ['Founder', 'CTO', 'CEO, Developer', 'Sales and Marketing'] },
   description: { type: String, required: true }, // about your company
   companyUrl: { type: String },//company website if any

@@ -7,7 +7,7 @@ import { addPitch, getPitches } from "../controllers/Pitch.js";
 const pitchRouter = Router();
 //define routes endpoints
 pitchRouter.post('/pitch', isAuthenticated, addPitch);
-pitchRouter.get('/pitch', getPitches)
+pitchRouter.get('/pitches', getPitches)
 
 
 //export router
