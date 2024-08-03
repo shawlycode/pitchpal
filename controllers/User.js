@@ -51,3 +51,17 @@ export const login = async (req, res, next) => {
   res.status(200).json('User Logged in')
 
 }
+
+export const profile = async (req, res, next) => {
+  try {
+    //get user id from session
+    const id = req.session.user.id;
+    //find user by id
+    const user = await UserModel.findById(id)
+      .select({ password: false })
+    //return response
+    res.status(200).json(user);
+  } catch (error) {
+    next(error)
+  }
+}

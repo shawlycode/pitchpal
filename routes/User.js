@@ -1,7 +1,9 @@
 import { Router } from "express";
-import { login, register } from "../controllers/User.js";
+import { login, profile, register } from "../controllers/User.js";
+import { isAuthenticated } from "../middlewares/auth.js";
 
 export const userRouter = Router();
 
 userRouter.post('/register', register);
 userRouter.post('/login', login);
+userRouter.get('/profile', isAuthenticated, profile);

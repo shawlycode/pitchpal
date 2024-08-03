@@ -1,4 +1,4 @@
-import { Model, Schema, Types } from "mongoose";
+import { model, Schema, Types } from "mongoose";
 import { toJSON } from "@reis/mongoose-to-json";
 
 
@@ -8,7 +8,7 @@ const pitchSchema = new Schema({
   founderVideoUrl: { type: String }, // 1 minute video(upload) intro of founder(s)
   recordVideo: { type: String }, // record 1 minute video of founder(s)
   companyName: { type: String },
-  role: { type: string, enum: ['Founder', 'CTO', 'CEO, Developer', 'Sales and Marketing'] },
+  role: { type: String, enum: ['Founder', 'CTO', 'CEO, Developer', 'Sales and Marketing'] },
   description: { type: String, required: true }, // about your company
   companyUrl: { type: String },//company website if any
   demoUrl: { type: String }, //upload pitch demo 
