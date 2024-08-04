@@ -35,8 +35,8 @@ pitchpal.use(cors({ credentials: true, origin: '*' }));
 
 //listening to port
 const PORT = process.env.PORT || 8090
-pitchpal.use('/users', userRouter);
-pitchpal.use(pitchRouter);
+pitchpal.use('/api/users', userRouter);
+pitchpal.use('/api', pitchRouter);
 
 expressOasGenerator.handleRequests();
 pitchpal.use((req, res) => res.redirect('/api-docs/'));
