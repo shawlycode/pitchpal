@@ -1,6 +1,8 @@
 
 import { PitchModel } from "../models/Pitch.js";
+import { UserModel } from "../models/User.js";
 import { addPitchValidator } from "../validators/Pitch.js";
+
 
 
 
@@ -29,10 +31,12 @@ export const getPitches = async (req, res, next) => {
   try {
     //find pitches
     const pitches = await PitchModel.find()
-      .populate('user');
+      .populate({ path: 'user', select: { name: true, role: true, techSector: true } });
     //return response
     res.status(200).json(pitches)
   } catch (error) {
     next(error)
   }
 }
+
+// update a pitch

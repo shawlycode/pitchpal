@@ -10,6 +10,7 @@ const pitchSchema = new Schema({
   companyName: { type: String, required: true },
   role: { type: String, enum: ['Founder', 'CTO', 'CEO, Developer', 'Sales and Marketing'] },
   description: { type: String, required: true }, // about your company
+  techSector: { type: String },
   companyUrl: { type: String },//company website if any
   demoUrl: { type: String }, //upload pitch demo 
   recordDemo: { type: String }, //record pitch on screen using the platform

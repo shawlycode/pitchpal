@@ -9,6 +9,7 @@ export const addPitchValidator = joi.object({
   recordVideo: joi.string(),
   companyName: joi.string().required(),
   role: joi.string(),
+  techSector: joi.string(),
   description: joi.string().required(),
   companyUrl: joi.string(),
   demoUrl: joi.string(),
