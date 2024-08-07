@@ -39,4 +39,24 @@ export const getPitches = async (req, res, next) => {
   }
 }
 
-// update a pitch
+export const deletePitch = async (req, res, next) => {
+  try {
+    const userSessionId = req.session.user.id;
+    const user = await PitchModel.findById(userSessionId);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    const pitch = await PitchModel.findByIdAndDelete(req.params.id);
+    if (!profile) {
+      return res.status(404).send("pitch not found");
+    }
+
+    user.pitch.pull(req.params.id);
+    await user.save();
+
+    res.status(200).json("pitch deleted");
+  } catch (error) {
+    next(error)
+    // return res.status(500).json({ error })
+  }
+};

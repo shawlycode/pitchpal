@@ -5,6 +5,7 @@ import { toJSON } from "@reis/mongoose-to-json";
 
 const pitchSchema = new Schema({
   user: { type: Types.ObjectId, ref: "User", required: true },
+  title: { type: String, required: true },
   founderVideoUrl: { type: String }, // 1 minute video(upload) intro of founder(s)
   recordVideo: { type: String }, // record 1 minute video of founder(s)
   companyName: { type: String, required: true },

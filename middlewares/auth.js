@@ -9,7 +9,7 @@ export const isAuthenticated = async (req, res, next) => {
   else if (req.headers.authorization) {
     try {
       //extract token from headers
-      const token = req.headers.authorization.split(' ')[1];
+      const token = req.headers.authorization.split('')[1];
       //verify token to get user and append req
       req.user = jwt.verify(token, process.env.JWT_PRIVATE_KEY)
     } catch (error) {

@@ -7,6 +7,7 @@ export const register = async (req, res, next) => {
   try {
     const { value, error } = registerValidator.validate(req.body);
     if (error) {
+
       return res.status(422).json(error);
     }
     //encrypt user password

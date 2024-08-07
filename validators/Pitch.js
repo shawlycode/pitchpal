@@ -5,6 +5,7 @@ import joi from "joi"
 
 export const addPitchValidator = joi.object({
   user: joi.string().required(),
+  title: joi.string().required(),
   founderVideoUrl: joi.string(),
   recordVideo: joi.string(),
   companyName: joi.string().required(),
