@@ -6,10 +6,10 @@ import { addPitch, deletePitch, getPitches } from "../controllers/Pitch.js";
 //create route
 const pitchRouter = Router();
 //define routes endpoints
-pitchRouter.post('/pitch', isAuthenticated, addPitch);
+pitchRouter.post('/pitches', isAuthenticated, addPitch);
 pitchRouter.get('/pitches', getPitches)
-pitchRouter.patch('/pitch/:id', isAuthenticated);
-pitchRouter.delete('/pitch/:id', isAuthenticated, deletePitch)
+pitchRouter.patch('/pitches/:id', isAuthenticated);
+pitchRouter.delete('/pitches/:id', isAuthenticated, deletePitch)
 
 
 //export router

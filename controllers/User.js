@@ -27,29 +27,33 @@ export const register = async (req, res, next) => {
 
 export const login = async (req, res, next) => {
   //validate request
-  const { value, error } = loginValidator.validate(req.body);
-  if (error) {
-    return res.status(422).json(error)
+  try {
+    const { value, error } = loginValidator.validate(req.body);
+    if (error) {
+      return res.status(422).json(error)
+    }
+    //find user with identifier
+    const user = await UserModel.findOne({
+      $or: [
+        { username: value.username },
+        { email: value.email }
+      ]
+    });
+    if (!user) {
+      return res.status(401).json('User not Found')
+    }
+    //verify password
+    const correctPassword = bcrypt.compareSync(value.password, user.password);
+    if (!correctPassword) {
+      return res.status(401).json('Invalid Credentials')
+    }
+    //create res
+    req.session.user = { id: user.id }
+    //return res
+    res.status(200).json('User Logged in')
+  } catch (error) {
+
   }
-  //find user with identifier
-  const user = await UserModel.findOne({
-    $or: [
-      { username: value.username },
-      { email: value.email }
-    ]
-  });
-  if (!user) {
-    return res.status(401).json('User not Found')
-  }
-  //verify password
-  const correctPassword = bcrypt.compareSync(value.password, user.password);
-  if (!correctPassword) {
-    return res.status(401).json('Invalid Credentials')
-  }
-  //create res
-  req.session.user = { id: user.id }
-  //return res
-  res.status(200).json('User Logged in')
 
 }
 
