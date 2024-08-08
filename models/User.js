@@ -9,7 +9,7 @@ const userSchema = new Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true, unique: true },
   username: { type: String, required: true, unique: true },
-  role: { type: String, enum: ["entrepreneur", "investor"], default: 'entrepreneur' },
+  role: { type: String, enum: ["entrepreneur", "investor", "admin"], default: 'entrepreneur', required: true },
 },
   { timestamps: true });
 userSchema.plugin(toJSON);

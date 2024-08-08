@@ -19,6 +19,8 @@ export const addPitchValidator = joi.object({
   fundingGoal: joi.string().required(),
   fundingAmount: joi.string(),
   status: joi.string(),
+  reviewStatus: joi.string(),
+  reviewedBy: joi.string(),
   productUrl: joi.string(),
   productDetails: joi.string(),
   ideation: joi.string(),

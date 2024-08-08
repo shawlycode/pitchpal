@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { isAuthenticated } from "../middlewares/auth.js";
-import { addPitch, deletePitch, getPitches } from "../controllers/Pitch.js";
+import { addPitch, deletePitches, getPitches, getSinglePitch } from "../controllers/Pitch.js";
 
 
 //create route
@@ -9,7 +9,8 @@ const pitchRouter = Router();
 pitchRouter.post('/pitches', isAuthenticated, addPitch);
 pitchRouter.get('/pitches', getPitches)
 pitchRouter.patch('/pitches/:id', isAuthenticated);
-pitchRouter.delete('/pitches/:id', isAuthenticated, deletePitch)
+pitchRouter.delete('/pitches/:id', isAuthenticated, deletePitches)
+pitchRouter.get('/pitches/:id', isAuthenticated, getSinglePitch);
 
 
 //export router

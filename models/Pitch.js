@@ -18,7 +18,9 @@ const pitchSchema = new Schema({
   slidesUrl: { type: String }, // pitch slides eg. powerPoint
   fundingGoal: { type: Number, required: true },
   fundingAmount: { type: Number, default: 0.00 },
-  status: { type: String, enum: ['Open', 'Pending Approval', 'Approved', 'In Progress', 'Closed'], default: 'Closed' },
+  status: { type: String, enum: ['open', 'closed'], default: 'open' },
+  reviewStatus: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'approved' },
+  reviewedBy: { type: Types.ObjectId, ref: 'Admin' },
   productUrl: { type: String }, //link to pitch product if already in the market
   productDetails: { type: String }, //what the product does
   ideation: { type: String }, // why the idea/product?
